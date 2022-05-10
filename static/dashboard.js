@@ -5,7 +5,7 @@
 var data_dir = {}
 
 function importData() {
-  fetch("../index.json?" + Math.floor(Math.random() * 100000))
+  fetch("../index?" + Math.floor(Math.random() * 100000))
     .then(response => {
       return response.json();
     })
