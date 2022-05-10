@@ -79,7 +79,7 @@ function levelone(proj) {
 function leveltwocontainter(proj) {
   node = document.createElement("div")
   node.id = "collapse" + proj
-  node.classList.add("accordion-collapse", "collapse")
+  node.classList.add("accordion-collapse", "collapse", 'show')
   node.dataset['bsParent'] = "#accordion";
   return node
 
