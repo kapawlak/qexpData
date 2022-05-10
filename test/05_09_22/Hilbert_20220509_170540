@@ -1,0 +1,200 @@
+{
+  "identity": [
+    {
+      "person": "Kelly Pawlak",
+      "organization": "ColdQuanta",
+      "org_id": "05b07ed5-c04b-4e73-826b-c3b285467c3d",
+      "project": "test",
+      "project_id": "f5d875a3-b02a-4a97-a24c-81c39b507190",
+      "giturl": "https://gitlab.com/coldquanta/coldquanta-applications-team/qexp"
+    }
+  ],
+  "parameters": [
+    {
+      "shots": 16,
+      "coupling": "[[0, 1], [0, 2], [2, 3], [1, 3], [1, 0], [2, 0], [3, 2], [3, 1]]",
+      "optimization": 0,
+      "circuit_data": "[(Instruction(name='rz', num_qubits=1, num_clbits=0, params=[3.141592653589793]), [Qubit(QuantumRegister(1, 'q'), 0)], []), (Instruction(name='measure', num_qubits=1, num_clbits=1, params=[]), [Qubit(QuantumRegister(1, 'q'), 0)], [Clbit(ClassicalRegister(1, 'c'), 0)])]",
+      "qasm": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[1];\ncreg c[1];\nrz(pi) q[0];\nmeasure q[0] -> c[0];\n"
+    }
+  ],
+  "output": [
+    {
+      "run time": "20220509_170540",
+      "run duration": 0.662309,
+      "counts": {
+        "01": 16,
+        "10": 9
+      }
+    }
+  ],
+  "errors": [
+    {
+      "error_log": []
+    }
+  ],
+  "machine_status": {
+    "available": true,
+    "operations": {
+      "idle": [],
+      "spam": [
+        {
+          "qubit_id": 0,
+          "fidelity": {
+            "value": 0.9622641509433962,
+            "lower_sigma": 0.9334970002474842,
+            "upper_sigma": 0.9910313016393083,
+            "time_recorded": 1651788559.259106
+          }
+        },
+        {
+          "qubit_id": 1,
+          "fidelity": {
+            "value": 1.0,
+            "lower_sigma": 0.982043840548715,
+            "upper_sigma": 1.017956159451285,
+            "time_recorded": 1651788559.259196
+          }
+        },
+        {
+          "qubit_id": 2,
+          "fidelity": {
+            "value": 0.9855072463768116,
+            "lower_sigma": 0.9665457218175241,
+            "upper_sigma": 1.0044687709360993,
+            "time_recorded": 1651788559.259732
+          }
+        },
+        {
+          "qubit_id": 3,
+          "fidelity": {
+            "value": 1.0,
+            "lower_sigma": 0.9820105536961314,
+            "upper_sigma": 1.0179894463038686,
+            "time_recorded": 1651788559.259821
+          }
+        }
+      ],
+      "gr": [
+        {
+          "qubit_id": 0,
+          "fidelity": {
+            "value": 0.997210435441308,
+            "lower_sigma": 0.996896055306762,
+            "upper_sigma": 0.9975248155758542,
+            "time_recorded": 1651711967.050112
+          }
+        },
+        {
+          "qubit_id": 1,
+          "fidelity": {
+            "value": 0.9983243186235441,
+            "lower_sigma": 0.9981631043332415,
+            "upper_sigma": 0.9984855329138467,
+            "time_recorded": 1651711967.050154
+          }
+        },
+        {
+          "qubit_id": 2,
+          "fidelity": {
+            "value": 0.9980696031986751,
+            "lower_sigma": 0.9978968762305942,
+            "upper_sigma": 0.998242330166756,
+            "time_recorded": 1651711967.05041
+          }
+        },
+        {
+          "qubit_id": 3,
+          "fidelity": {
+            "value": 0.998025479545312,
+            "lower_sigma": 0.9978547577907365,
+            "upper_sigma": 0.9981962012998874,
+            "time_recorded": 1651711967.050452
+          }
+        }
+      ],
+      "rz": [
+        {
+          "qubit_id": 0,
+          "fidelity": {
+            "value": 0.9940115129893059,
+            "lower_sigma": 0.99253610294827,
+            "upper_sigma": 0.9954869230303418,
+            "time_recorded": 1651704720.022722
+          }
+        },
+        {
+          "qubit_id": 1,
+          "fidelity": {
+            "value": 0.9957328317987236,
+            "lower_sigma": 0.9946401270563963,
+            "upper_sigma": 0.996825536541051,
+            "time_recorded": 1651704720.022774
+          }
+        },
+        {
+          "qubit_id": 2,
+          "fidelity": {
+            "value": 0.9943966549159041,
+            "lower_sigma": 0.9930466648209288,
+            "upper_sigma": 0.9957466450108794,
+            "time_recorded": 1651704720.022801
+          }
+        },
+        {
+          "qubit_id": 3,
+          "fidelity": {
+            "value": 0.9967880837509487,
+            "lower_sigma": 0.9959338080034382,
+            "upper_sigma": 0.9976423594984593,
+            "time_recorded": 1651704720.022828
+          }
+        }
+      ],
+      "cz": [
+        {
+          "qubit_a_id": 1,
+          "qubit_b_id": 0,
+          "fidelity": {
+            "value": 0.8802277191574626,
+            "lower_sigma": 0.8650288578165544,
+            "upper_sigma": 0.8954265804983708,
+            "time_recorded": 1651595740.245147
+          }
+        },
+        {
+          "qubit_a_id": 1,
+          "qubit_b_id": 3,
+          "fidelity": {
+            "value": 0.868974307907605,
+            "lower_sigma": 0.8527156401947444,
+            "upper_sigma": 0.8852329756204655,
+            "time_recorded": 1651588700.884059
+          }
+        },
+        {
+          "qubit_a_id": 2,
+          "qubit_b_id": 3,
+          "fidelity": {
+            "value": 0.8942881259791775,
+            "lower_sigma": 0.8850363392332335,
+            "upper_sigma": 0.9035399127251215,
+            "time_recorded": 1651608840.625535
+          }
+        },
+        {
+          "qubit_a_id": 2,
+          "qubit_b_id": 0,
+          "fidelity": {
+            "value": 0.8972541618462658,
+            "lower_sigma": 0.865361854696515,
+            "upper_sigma": 0.9291464689960166,
+            "time_recorded": 1651602226.05982
+          }
+        }
+      ]
+    },
+    "max_shots": 2048,
+    "max_gates": 1024
+  }
+}
