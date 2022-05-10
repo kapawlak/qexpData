@@ -132,7 +132,7 @@ function importRun(location) {
 
 
 const arrayColumn = (arr, n) => arr.map(x => x[n]);
-
+var current_chart
 
 function data_viz(data_list) {
   'use strict'
@@ -153,6 +153,7 @@ function data_viz(data_list) {
 
   // Graphs
   var ctx = document.getElementById('myChart')
+  current_chart.destroy()
   // eslint-disable-next-line no-unused-vars
   var myChart = new Chart(ctx, {
     type: 'bar',
@@ -180,6 +181,7 @@ function data_viz(data_list) {
       }
     }
   })
+  current_chart=myChart
 
   data_dump(data_list)
 }
