@@ -126,7 +126,7 @@ function leveltwo(proj, date) {
 
 function levelthree(proj, date, run) {
     run_method = run.substring(0, 7)
-    run_time = run.substring(17, 23)
+    run_time = run.substring(16, 23)
     run_string = `${run_method} @ ${run_time.substring(0, 2)}:${run_time.substring(2, 4)}:${run_time.substring(4, 6)}`
 
     node = document.createElement("div")
