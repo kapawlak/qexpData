@@ -1,121 +1,12 @@
 /* globals Chart:false, feather:false */
-
-///Start by just printing out json file.
-
-var data_dir = {}
-
-function importData() {
-  fetch("index?" + Math.floor(Math.random() * 100000))
-    .then(response => {
-      return response.json();
-    })
-    .then(data => stash(data));
-  function stash(data) {
-    data_dir = data
-    navBar()
-
-  }
-}
-
-function navBar() {
-  datas = data_dir['qexp_data']
-  navbar = document.getElementById("accordion")
-
-  for (var proj in datas) {
-    var proj_dir = datas[proj];
-    if (proj != 'index.html' && proj != 'index') {
-      console.log(proj, proj == 'info')
-      accordion_container = ac_item()
-      navbar.appendChild(accordion_container)       // Create top level accordion container
-      project_node = levelone(proj)
-      accordion_container.appendChild(project_node)    // Append Project header to top level accordion container
-      date_collapsing_containter = leveltwocontainter(proj)
-      accordion_container.appendChild(date_collapsing_containter)     // Append the collapsing container for the dates
-
-
-      for (var date in proj_dir) {
-        if (date != "info") {
-          var date_dir = proj_dir[date];
-          big_ac = document.createElement("div")
-          big_ac.id = proj + date
-          date_collapsing_containter.appendChild(big_ac)
-          accordion_container2 = ac_item()
-
-          big_ac.appendChild(accordion_container2)
-          date_node = leveltwo(proj, date)
-          accordion_container2.appendChild(date_node)
-
-
-          for (var run in date_dir) {
-            run_node = levelthree(proj, date, run)
-            accordion_container2.appendChild(run_node)
-          }
-
-        }
-      }
-    }
-  }
-}
-
-function ac_item() {
-  node = document.createElement("div")
-  node.classList.add('accordion-item')
-  return node
-}
-
-function levelone(proj) {
-
-  node = document.createElement("h2")
-  node.classList.add('accordion-header')
-  node.id = "heading" + proj
-  node.innerHTML = `
-  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${proj}" aria-expanded="true" aria-controls="collapse${proj}">
-  Project: ${proj}
-  </button>
-  `
-  return node
-}
-
-function leveltwocontainter(proj) {
-  node = document.createElement("div")
-  node.id = "collapse" + proj
-  node.classList.add("accordion-collapse", "collapse", 'show')
-  node.dataset['bsParent'] = "#accordion";
-  return node
-
-}
-
-
-function leveltwo(proj, date) {
-  node = document.createElement("h3")
-  node.classList.add('accordion-header')
-  node.id = "heading" + proj
-  node.innerHTML = `
-  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${date}" aria-expanded="true" aria-controls="collapse${date}">
-    <small> ${date} </small>
-  </button>
-  `
-  return node
-}
-
-function levelthree(proj, date, run) {
-  node = document.createElement("div")
-  node.id = "collapse" + date
-  node.classList.add("accordion-collapse", "collapse")
-  node.dataset['bsParent'] = `#${proj + date}`;
-
-  node.innerHTML = `
-  <a class="nav-link" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${date}" aria-expanded="true" aria-controls="collapse${date}" onclick="importRun('${proj}/${date}/${run}')">
-    <small> ${run} </small>
-  </a>
-  `
-  return node
-}
-
-
+const arrayColumn = (arr, n) => arr.map(x => x[n]);
+var current_chart
 
 
 function importRun(location) {
+  preinfo=document.getElementById('preinfo')
+  if (preinfo!= null){
+      preinfo.remove()}
   rundata = {}
   fetch(location)
     .then(response => {
@@ -131,29 +22,24 @@ function importRun(location) {
 
 
 
-const arrayColumn = (arr, n) => arr.map(x => x[n]);
-var current_chart
 
 function data_viz(data_list) {
   'use strict'
 
-  console.log(typeof(data_list))
 
-  for (var item in data_list['output']){
-    console.log('top: ',item, data_list['output'][item])
-    for (var item2 in data_list['output'][item]){
-    console.log('bottom: ', item2, data_list['output'][item][item2])}
-    }
-  
-  var counts_dic=data_list['output'][0]["counts"]
+ 
+
+
+  var counts_dic=data_list['output']["counts"]
   var count_array=Object.keys(counts_dic).map((key) => [key, counts_dic[key]])
-  console.log(arrayColumn(count_array,1))
+ 
 
-  feather.replace({ 'aria-hidden': 'true' })
+
 
   // Graphs
   var ctx = document.getElementById('myChart')
-  current_chart.destroy()
+  if (current_chart){
+    current_chart.destroy()}
   // eslint-disable-next-line no-unused-vars
   var myChart = new Chart(ctx, {
     type: 'bar',
@@ -187,13 +73,119 @@ function data_viz(data_list) {
 }
 
 function data_dump(data_list){
+
   dataholder=document.getElementById('data-holder')
-  var str = syntaxHighlight(data_list)
-  dataholder.innerHTML='<pre id="json">'+str+'</pre>'
+  dataholder.innerHTML=''
+  var data_keys=Object.keys(data_list)
+
+
+  oplist=['spam','gr', 'rz']
+  dataholder.innerHTML+=
+  `
+  <h2> Run overview </h2>
+  <div class="container m-0 p-0">
+  <div class="row align-items-start">
+
+  <div class="col">
+          <div class="card" style="width: 100%;">
+          <div class="card-header">
+            <b>Outputs</b> 
+          </div>
+          <ul class="list-group list-group-flush center">
+            <li class="list-group-item">Run time: ${data_list['output']['run time']}</li>
+            <li class="list-group-item">Run duration: ${data_list['output']['run duration']} seconds</li>
+            <li class="list-group-item">A third item</li>
+          </ul>
+          </div>
+    </div>
+    <div class="col">
+          <div class="card" style="width: 100%;">
+          <div class="card-header">
+            <b>Parameters</b> 
+          </div>
+          <ul class="list-group list-group-flush center">
+            <li class="list-group-item">Shots: ${data_list['parameters']['shots']}</li>
+            <li class="list-group-item">Coupling map: <br> ${data_list['parameters']['coupling']} </li>
+            <li class="list-group-item">Optimization: ${data_list['parameters']['optimization']}</li>
+          </ul>
+          </div>
+    </div>
+    <div class="col">
+            <div class="card" style="width: 100%;">
+            <div class="card-header">
+              <b>Identity</b> 
+            </div>
+            <ul class="list-group list-group-flush center">
+              <li class="list-group-item">Person: ${data_list['identity']['person']}, ${data_list['identity']['organization']}</li>
+              <li class="list-group-item">project git: ${data_list['identity']['giturl']} </li>
+              <li class="list-group-item">A third item</li>
+            </ul>
+            </div>
+    </div>
+  </div>
+  </div>
+ 
+  `
+
+
+
+ mop=data_list['machine_status']['operations']
+ machine_table=document.createElement('table')
+ dataholder.appendChild(machine_table)
+ machine_table.classList.add('table')
+ machine_table.innerHTML=
+ `
+ <thead>
+ <tr>
+ <th scope="col">Quantity</th>
+ <th scope="col">Q1</th>
+ <th scope="col">Q2</th>
+ <th scope="col">Q3</th>
+ <th scope="col">Q4</th>
+ </tr>
+ </thead>
+ `
+  machine_body=document.createElement('tbody')
+  machine_table.appendChild(machine_body)
+  console.log(mop['spam'][0]["fidelity"]["value"])
+
+ for (var quant in oplist){
+   row_data=`
+   <tr>
+   <th scope="row">${oplist[quant]}</th>`
+   for (let i= 0; i<4; i++){
+     console.log(quant,i)
+     row_data+=`<td> 
+       <b>${mop[oplist[quant]][i]["fidelity"]["value"]} </b><br>
+       (${mop[oplist[quant]][i]["fidelity"]["upper_sigma"]},
+       ${mop[oplist[quant]][i]["fidelity"]["lower_sigma"]})</td>`
+   }
+   row_data+='</tr>'
+   machine_table.innerHTML+=row_data
+ }
+  
+
+
+
+  //var str = syntaxHighlight(data_list)
+  //dataholder.innerHTML+='<pre id="json">'+str+'</pre>'
 
   
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+// Utility
 function syntaxHighlight(json) {
   if (typeof json != 'string') {
        json = JSON.stringify(json, undefined, 2);
@@ -217,7 +209,8 @@ function syntaxHighlight(json) {
 }
 
 
-importData()
+
+
 
 
 
