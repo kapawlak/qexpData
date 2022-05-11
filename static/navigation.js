@@ -47,8 +47,9 @@ function navBar(data_dir) {
                     accordion_container2.appendChild(run_container)
                     runs = Object.keys(date_dir).sort().reverse()
                     for (var run in runs) {
-                        run_node = levelthree(proj, date, runs[run])
-                        run_container.appendChild(run_node)
+                        if (runs[run] != 'img'){
+                            run_node = levelthree(proj, date, runs[run])
+                            run_container.appendChild(run_node)}
                     }
 
                 }

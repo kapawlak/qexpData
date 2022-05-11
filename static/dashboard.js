@@ -4,6 +4,7 @@ var current_chart
 
 
 function importRun(location) {
+  console.log(location)
   preinfo=document.getElementById('preinfo')
   if (preinfo!= null){
       preinfo.remove()}
@@ -15,7 +16,7 @@ function importRun(location) {
     .then(data => stash(data));
   function stash(data) {
     rundata = data
-    data_viz(rundata)
+    data_viz(rundata,location)
   }
 
 }
@@ -23,7 +24,7 @@ function importRun(location) {
 
 
 
-function data_viz(data_list) {
+function data_viz(data_list,location) {
   'use strict'
 
 
@@ -69,10 +70,10 @@ function data_viz(data_list) {
   })
   current_chart=myChart
 
-  data_dump(data_list)
+  data_dump(data_list,location)
 }
 
-function data_dump(data_list){
+function data_dump(data_list,location){
 
   dataholder=document.getElementById('data-holder')
   dataholder.innerHTML=''
@@ -147,7 +148,6 @@ function data_dump(data_list){
  `
   machine_body=document.createElement('tbody')
   machine_table.appendChild(machine_body)
-  console.log(mop['spam'][0]["fidelity"]["value"])
 
  for (var quant in oplist){
    row_data=`
@@ -164,6 +164,20 @@ function data_dump(data_list){
    machine_table.innerHTML+=row_data
  }
   
+ locpeices=location.split("/")
+ dataholder.innerHTML+=
+ `
+ <h2> Circuit Image </h2>
+ <div class="container m-5 p-5">
+ <div class="card text-center">
+ <center>
+ <img src='${locpeices[0]}/${locpeices[1]}/img/${locpeices[2].substring(7)}.png' width="100%"></img>
+ </center>
+ 
+ </div>
+ </div>
+
+ `
 
 
 

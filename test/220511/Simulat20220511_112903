@@ -15,8 +15,8 @@
     "qasm": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[2];\ncreg c[2];\nrz(3.14) q[0];\nmeasure q[0] -> c[0];\nmeasure q[1] -> c[1];\n"
   },
   "output": {
-    "run time": "20220511_101834",
-    "run duration": 0.887504,
+    "run time": "20220511_112903",
+    "run duration": 0.57077,
     "counts": {
       "00": 16
     }
