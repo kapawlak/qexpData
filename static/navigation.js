@@ -16,7 +16,9 @@ function importDirData() {
 
 
 function navBar(data_dir) {
-    datas = data_dir['qexp_data']
+
+    console.log(data_dir)
+    datas = data_dir
     navbar = document.getElementById("accordion")
     var opened = false
     for (var proj in datas) {
@@ -125,8 +127,10 @@ function leveltwo(proj, date) {
 }
 
 function levelthree(proj, date, run) {
-    run_method = run.substring(0, 7)
-    run_time = run.substring(16, 23)
+    console.log(run.split('_')[0])
+    run_info=run.split('_')
+    run_method = run_info[0]
+    run_time = run_info[2]
     run_string = `${run_method} @ ${run_time.substring(0, 2)}:${run_time.substring(2, 4)}:${run_time.substring(4, 6)}`
 
     node = document.createElement("div")

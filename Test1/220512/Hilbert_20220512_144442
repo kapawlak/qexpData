@@ -1,0 +1,197 @@
+{
+  "identity": {
+    "person": "Kelly Pawlak",
+    "title": "Quantum Applications Engineer",
+    "organization": "ColdQuanta",
+    "org_id": "05b07ed5-c04b-4e73-826b-c3b285467c3d",
+    "project": "Test 1",
+    "project_id": "f5d875a3-b02a-4a97-a24c-81c39b507190",
+    "giturl": "https://gitlab.com/coldquanta/coldquanta-applications-team/qexp"
+  },
+  "parameters": {
+    "shots": 16,
+    "coupling": "[[0, 1], [0, 2], [2, 3], [1, 3], [1, 0], [2, 0], [3, 2], [3, 1]]",
+    "optimization": 0,
+    "circuit_data": "[(Instruction(name='rz', num_qubits=1, num_clbits=0, params=[3.141592653589793]), [Qubit(QuantumRegister(2, 'q'), 0)], []), (Instruction(name='rz', num_qubits=1, num_clbits=0, params=[3.141592653589793]), [Qubit(QuantumRegister(2, 'q'), 1)], []), (Instruction(name='measure', num_qubits=1, num_clbits=1, params=[]), [Qubit(QuantumRegister(2, 'q'), 0)], [Clbit(ClassicalRegister(2, 'c'), 0)]), (Instruction(name='measure', num_qubits=1, num_clbits=1, params=[]), [Qubit(QuantumRegister(2, 'q'), 1)], [Clbit(ClassicalRegister(2, 'c'), 1)])]",
+    "qasm": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[2];\ncreg c[2];\nrz(pi) q[0];\nrz(pi) q[1];\nmeasure q[0] -> c[0];\nmeasure q[1] -> c[1];\n",
+    "device": "Hilbert"
+  },
+  "output": {
+    "run time": "20220512_144442",
+    "run duration": 0.410732,
+    "counts": {
+      "00": 16
+    }
+  },
+  "errors": {
+    "error_log": []
+  },
+  "machine_status": {
+    "available": true,
+    "operations": {
+      "idle": [],
+      "spam": [
+        {
+          "qubit_id": 0,
+          "fidelity": {
+            "value": 0.9830508474576272,
+            "lower_sigma": 0.9624395799291576,
+            "upper_sigma": 1.0036621149860967,
+            "time_recorded": 1652393846.210172
+          }
+        },
+        {
+          "qubit_id": 1,
+          "fidelity": {
+            "value": 0.9838709677419355,
+            "lower_sigma": 0.9633834981546926,
+            "upper_sigma": 1.0043584373291783,
+            "time_recorded": 1652393846.210235
+          }
+        },
+        {
+          "qubit_id": 2,
+          "fidelity": {
+            "value": 1.0,
+            "lower_sigma": 0.9818207669358491,
+            "upper_sigma": 1.018179233064151,
+            "time_recorded": 1652393846.210651
+          }
+        },
+        {
+          "qubit_id": 3,
+          "fidelity": {
+            "value": 0.9661016949152542,
+            "lower_sigma": 0.939290167870342,
+            "upper_sigma": 0.9929132219601664,
+            "time_recorded": 1652393846.210721
+          }
+        }
+      ],
+      "gr": [
+        {
+          "qubit_id": 0,
+          "fidelity": {
+            "value": 0.9995103010047128,
+            "lower_sigma": 0.999443754076614,
+            "upper_sigma": 0.9995768479328117,
+            "time_recorded": 1652323785.560179
+          }
+        },
+        {
+          "qubit_id": 1,
+          "fidelity": {
+            "value": 0.999394241608897,
+            "lower_sigma": 0.9993203981424776,
+            "upper_sigma": 0.9994680850753164,
+            "time_recorded": 1652323785.560214
+          }
+        },
+        {
+          "qubit_id": 2,
+          "fidelity": {
+            "value": 0.9996088662197804,
+            "lower_sigma": 0.9995525235892234,
+            "upper_sigma": 0.9996652088503374,
+            "time_recorded": 1652323785.560429
+          }
+        },
+        {
+          "qubit_id": 3,
+          "fidelity": {
+            "value": 0.99928917660261,
+            "lower_sigma": 0.9992100862458698,
+            "upper_sigma": 0.9993682669593501,
+            "time_recorded": 1652323785.560465
+          }
+        }
+      ],
+      "rz": [
+        {
+          "qubit_id": 0,
+          "fidelity": {
+            "value": 0.9944019679237869,
+            "lower_sigma": 0.9937224137051816,
+            "upper_sigma": 0.9950815221423922,
+            "time_recorded": 1652321497.790919
+          }
+        },
+        {
+          "qubit_id": 1,
+          "fidelity": {
+            "value": 0.9949952291297781,
+            "lower_sigma": 0.9943555669159758,
+            "upper_sigma": 0.9956348913435804,
+            "time_recorded": 1652321497.790983
+          }
+        },
+        {
+          "qubit_id": 2,
+          "fidelity": {
+            "value": 0.9916982545953955,
+            "lower_sigma": 0.9907094920940333,
+            "upper_sigma": 0.9926870170967578,
+            "time_recorded": 1652321497.791018
+          }
+        },
+        {
+          "qubit_id": 3,
+          "fidelity": {
+            "value": 0.9938688555596308,
+            "lower_sigma": 0.9931492376041192,
+            "upper_sigma": 0.9945884735151423,
+            "time_recorded": 1652321497.79105
+          }
+        }
+      ],
+      "cz": [
+        {
+          "qubit_a_id": 1,
+          "qubit_b_id": 0,
+          "fidelity": {
+            "value": 0.5687374368725606,
+            "lower_sigma": 0.5428555898943089,
+            "upper_sigma": 0.5946192838508123,
+            "time_recorded": 1652387712.506906
+          }
+        },
+        {
+          "qubit_a_id": 1,
+          "qubit_b_id": 3,
+          "fidelity": {
+            "value": 0.5603781664744109,
+            "lower_sigma": 0.5121750463378613,
+            "upper_sigma": 0.6085812866109604,
+            "time_recorded": 1652382854.223211
+          }
+        },
+        {
+          "qubit_a_id": 2,
+          "qubit_b_id": 3,
+          "fidelity": {
+            "value": 0.6542273235997399,
+            "lower_sigma": 0.6345157569083424,
+            "upper_sigma": 0.6739388902911374,
+            "time_recorded": 1652391192.857562
+          }
+        },
+        {
+          "qubit_a_id": 2,
+          "qubit_b_id": 0,
+          "fidelity": {
+            "value": 0.6208641948967849,
+            "lower_sigma": 0.5989659448310174,
+            "upper_sigma": 0.6427624449625524,
+            "time_recorded": 1652393689.670794
+          }
+        }
+      ]
+    },
+    "max_shots": 2048,
+    "max_gates": 1024
+  },
+  "exports": {
+    "x1": 3.141592653589793,
+    "x2": 1.5707963267948966
+  }
+}
