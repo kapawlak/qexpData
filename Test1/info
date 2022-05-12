@@ -1,0 +1,7 @@
+{
+  "name": "Test 1",
+  "description": "This project is to test the new data pipeline",
+  "giturl": "https://gitlab.com/coldquanta/coldquanta-applications-team/qexp",
+  "pr_id": "f5d875a3-b02a-4a97-a24c-81c39b507190",
+  "typ": "internal"
+}

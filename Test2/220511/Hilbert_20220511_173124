@@ -1,22 +1,24 @@
 {
   "identity": {
     "person": "Kelly Pawlak",
+    "title": "Quantum Applications Engineer",
     "organization": "ColdQuanta",
     "org_id": "05b07ed5-c04b-4e73-826b-c3b285467c3d",
-    "project": "test",
+    "project": "Test 2",
     "project_id": "f5d875a3-b02a-4a97-a24c-81c39b507190",
-    "giturl": "noneya"
+    "giturl": "https://gitlab.com/coldquanta/coldquanta-applications-team/qexp"
   },
   "parameters": {
     "shots": 16,
     "coupling": "[[0, 1], [0, 2], [2, 3], [1, 3], [1, 0], [2, 0], [3, 2], [3, 1]]",
     "optimization": 0,
-    "circuit_data": "[(Instruction(name='rz', num_qubits=1, num_clbits=0, params=[3.14]), [Qubit(QuantumRegister(2, 'q'), 0)], []), (Instruction(name='measure', num_qubits=1, num_clbits=1, params=[]), [Qubit(QuantumRegister(2, 'q'), 0)], [Clbit(ClassicalRegister(2, 'c'), 0)]), (Instruction(name='measure', num_qubits=1, num_clbits=1, params=[]), [Qubit(QuantumRegister(2, 'q'), 1)], [Clbit(ClassicalRegister(2, 'c'), 1)])]",
-    "qasm": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[2];\ncreg c[2];\nrz(3.14) q[0];\nmeasure q[0] -> c[0];\nmeasure q[1] -> c[1];\n"
+    "circuit_data": "[(Instruction(name='rz', num_qubits=1, num_clbits=0, params=[1.14]), [Qubit(QuantumRegister(2, 'q'), 0)], []), (Instruction(name='measure', num_qubits=1, num_clbits=1, params=[]), [Qubit(QuantumRegister(2, 'q'), 0)], [Clbit(ClassicalRegister(2, 'c'), 0)]), (Instruction(name='measure', num_qubits=1, num_clbits=1, params=[]), [Qubit(QuantumRegister(2, 'q'), 1)], [Clbit(ClassicalRegister(2, 'c'), 1)])]",
+    "qasm": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[2];\ncreg c[2];\nrz(1.14) q[0];\nmeasure q[0] -> c[0];\nmeasure q[1] -> c[1];\n",
+    "device": "Hilbert"
   },
   "output": {
-    "run time": "20220511_112903",
-    "run duration": 0.57077,
+    "run time": "20220511_173124",
+    "run duration": 0.534762,
     "counts": {
       "00": 16
     }
@@ -187,5 +189,6 @@
     },
     "max_shots": 2048,
     "max_gates": 1024
-  }
+  },
+  "exports": null
 }

@@ -165,13 +165,14 @@ function data_dump(data_list,location){
  }
   
  locpeices=location.split("/")
+ console.log(locpeices)
  dataholder.innerHTML+=
  `
  <h2> Circuit Image </h2>
  <div class="container m-5 p-5">
  <div class="card text-center">
  <center>
- <img src='${locpeices[0]}/${locpeices[1]}/img/${locpeices[2].substring(7)}.png' width="100%"></img>
+ <img src='${locpeices[0]}/${locpeices[1]}/img/${locpeices[2].split('_')[1]}_${locpeices[2].split('_')[2]}.png' width="100%"></img>
  </center>
  
  </div>
